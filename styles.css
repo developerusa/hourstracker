@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #add8e6, #ffcccb); /* Light blue to light pink gradient */
+    color: #ffffff; /* White text for better contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative; /* Ensure the body is positioned relative for the pseudo-element */
+    overflow: hidden; /* To contain the animation within the body */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+    animation: shine 10s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+.container {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent white for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#hourlyPaySection {
+    margin: 0 auto;
+}
+
+#hourlyPaySection label,
+#hourlyPaySection input,
+#hourlyPaySection button {
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+}
+
+#hourlyPaySection input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#hourlyPaySection button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #ffcccb; /* Light pink background for button */
+    color: #000;
+    cursor: pointer;
+}
+
+#hourlyPaySection button:hover {
+    background-color: #ffb6c1; /* Darker pink on hover */
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+}
+
+#calendar div {
+    border: 1px solid #ccc;
+    padding: 10px; /* Decreased padding */
+    cursor: pointer;
+    background-color: #ffffff; /* White background for calendar days */
+    color: #000000; /* Black text for better readability */
+    position: relative;
+}
+
+#calendar div span {
+    display: block;
+    font-size: 12px;
+    color: #666;
+}
+
+#calendar div input {
+    display: none;
+    width: 50px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+#calendar div input[type="number"] {
+    margin-top: 5px;
+}
+
+#results {
+    margin-top: 20px;
+    text-align: center; /* Center the text */
+}
+
+#results .highlight {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0a0909; /* Highlight color */
+}
+
+/* New class for mixed background color */
+.mixed-background {
+    background: linear-gradient(to bottom, #add8e6, #ffcccb); /* Same gradient as the body */
+    opacity: 0.8;
+    color: #000; /* Ensure text is readable */
+}
+/* Media query for mobile compatibility */
+@media (max-width: 600px) {
+    body::before {
+        animation: shine 10s infinite;
+    }
+}
