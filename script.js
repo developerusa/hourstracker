@@ -7,9 +7,11 @@ userCount++;
 // Save the user count to localStorage
 localStorage.setItem('userCount', userCount);
 
-const adminPasswordHash = '5f4dcc3b5aa765d61d8327deb882cf99'; // Example hash for "password"
-
-
+// Function to initialize the app
+function initializeApp() {
+    // Show the user count
+    document.getElementById('userCount').innerText = userCount;
+}
 function startTracking() {
     hourlyPay = parseFloat(document.getElementById('hourlyPay').value) || 9; // Default to 9 if no input
     if (isNaN(hourlyPay) || hourlyPay <= 0) {
@@ -20,20 +22,7 @@ function startTracking() {
     document.getElementById('calendarSection').style.display = 'block';
     generateCalendar();
 }
-// Function to display the admin section
-function showAdminPanel() {
-    document.getElementById('adminSection').style.display = 'block';
-    document.getElementById('userCount').innerText = userCount;
-}
 
-// Function to initialize the app
-function initializeApp() {
-    // Prompt the user for an admin password
-    const password = prompt("Enter admin password:");
-    if (password && md5(password) === adminPasswordHash) {
-        showAdminPanel();
-    }
-}
 function generateCalendar() {
     const calendar = document.getElementById('calendar');
     calendar.innerHTML = ''; // Clear previous calendar
