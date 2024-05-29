@@ -2,21 +2,17 @@ let hourlyPay = 0;
 let totalPay = 0;
 let dailyEntries = {};
 
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof(Storage) !== "undefined") {
-        const userCountElement = document.getElementById('user-count');
-        let userCount = localStorage.getItem('userCount') || 0;
+let userCount = parseInt(localStorage.getItem('userCount')) || 0;
+userCount++;
 
-        // Increment the user count
-        userCount++;
-        localStorage.setItem('userCount', userCount);
+// Save the user count to localStorage
+localStorage.setItem('userCount', userCount);
 
-        // Display the user count
-        userCountElement.textContent = userCount;
-    } else {
-        console.error('localStorage is not supported');
-    }
-});
+// Function to initialize the app
+function initializeApp() {
+    // Show the user count
+    document.getElementById('userCount').innerText = userCount;
+}
 
 function startTracking() {
     hourlyPay = parseFloat(document.getElementById('hourlyPay').value) || 9; // Default to 9 if no input
